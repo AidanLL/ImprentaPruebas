@@ -49,9 +49,19 @@ public class ClienteTest {
         String result = instance.getNombre();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
+        public void testGetNombre1() {
+        System.out.println("getNombre");
+        Cliente instance = new Cliente();
+        String expResult = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        String result = instance.getNombre();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("Cadena demasiado larga");
+
+    }
     /**
      * Test of setNombre method, of class Cliente.
      */
@@ -62,7 +72,7 @@ public class ClienteTest {
         Cliente instance = new Cliente();
         instance.setNombre(nombre);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
