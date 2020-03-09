@@ -7,6 +7,8 @@ package imprenta;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,15 +46,64 @@ public class TrabajoTest {
      */
     @Test
     public void testGetRelieve() {
-        System.out.println("getRelieve");
-        Trabajo instance = new Trabajo();
-        String expResult = "";
-        String result = instance.getRelieve();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            System.out.println("getRelieve");
+            Trabajo instance = new Trabajo();
+            instance.setRelieve("");
+            String expResult = "";
+            String result = instance.getRelieve();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("Esta vacío.No vale");
+        } catch (TrabajoException ex) {
+           System.out.println("Paso por aquí");
+        }
     }
-
+    @Test
+    public void testGetRelieve1() {
+        try {
+            System.out.println("getRelieve");
+            Trabajo instance = new Trabajo();
+            instance.setRelieve("#");
+            String expResult = "#";
+            String result = instance.getRelieve();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El relieve no puede tener caracteres especiales(#).");
+        } catch (TrabajoException ex) {
+           System.out.println("Paso por aquí");
+        }
+    }
+    public void testGetRelieve2() {
+        try {
+            System.out.println("getRelieve");
+            Trabajo instance = new Trabajo();
+            instance.setRelieve("$");
+            String expResult = "$";
+            String result = instance.getRelieve();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El relieve no puede tener caracteres especiales($).");
+        } catch (TrabajoException ex) {
+           System.out.println("Paso por aquí");
+        }
+    }
+        public void testGetRelieve3() {
+        try {
+            System.out.println("getRelieve");
+            Trabajo instance = new Trabajo();
+            instance.setRelieve("@");
+            String expResult = "@";
+            String result = instance.getRelieve();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El relieve no puede tener caracteres especiales(@).");
+        } catch (TrabajoException ex) {
+           System.out.println("Paso por aquí");
+        }
+    }
+    
+    
     /**
      * Test of setRelieve method, of class Trabajo.
      */
@@ -73,11 +124,12 @@ public class TrabajoTest {
     public void testGetFechaSolicitud() {
         System.out.println("getFechaSolicitud");
         Trabajo instance = new Trabajo();
+        Date.from(null);
         Date expResult = null;
         Date result = instance.getFechaSolicitud();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("No hay fecha");
     }
 
     /**
@@ -100,11 +152,12 @@ public class TrabajoTest {
     public void testGetFechaRecogida() {
         System.out.println("getFechaRecogida");
         Trabajo instance = new Trabajo();
+        Date.from(null);
         Date expResult = null;
         Date result = instance.getFechaRecogida();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("No hay fecha.");
     }
 
     /**
