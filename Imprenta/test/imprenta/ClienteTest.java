@@ -6,6 +6,7 @@
 package imprenta;
 
 import java.util.ArrayList;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -93,7 +94,25 @@ public class ClienteTest {
 
         }
     }
+  /**
+     * Test of getNombre method, of class Cliente.
+     */
+    @Test
+    public void testGetNombre3() {
+        try {
+            System.out.println("getNombre");
+            Cliente instance = new Cliente();
+            instance.setNombre("Aidan");
+            String expResult = "Aidan";
+            String result = instance.getNombre();
+            assertNotEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El nombre deberia valer");
+        } catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
 
+        }
+    }
     /**
      * Test of setNombre method, of class Cliente.
      */
@@ -141,6 +160,23 @@ public class ClienteTest {
 
             assertEquals(nombre, instance.getNombre());
             fail("EL nombre no puede tener un signo de interrogacion");
+        } // TODO review the generated test code and remove the default call to fail.
+        catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
+    }
+
+    @Test
+    public void testSetNombre3() {
+        try {
+            System.out.println("setNombre");
+            String nombre = "Aidan";
+            Cliente instance = new Cliente();
+            instance.setNombre("Aidan");
+
+            assertNotEquals(nombre, instance.getNombre());
+            fail("EL nombre deberia valer");
         } // TODO review the generated test code and remove the default call to fail.
         catch (ClienteException ex) {
             System.out.println("Paso por aquí");
@@ -207,6 +243,20 @@ public class ClienteTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("demasiado corto");
     }
+    /**
+     * Test of getTelefono method, of class Cliente.
+     */
+    @Test
+    public void testGetTelefono4() {
+        System.out.println("getTelefono");
+        Cliente instance = new Cliente();
+        instance.setTelefono("999999999");
+        String expResult = "999999999";
+        String result = instance.getTelefono();
+        assertNotEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("Deberia valer");
+    }
 
     /**
      * Test of setTelefono method, of class Cliente.
@@ -223,7 +273,8 @@ public class ClienteTest {
         // TODO review the generated test code and remove the default call to fail.
 
     }
-   /**
+
+    /**
      * Test of setTelefono method, of class Cliente.
      */
     @Test
@@ -238,7 +289,8 @@ public class ClienteTest {
         // TODO review the generated test code and remove the default call to fail.
 
     }
-       /**
+
+    /**
      * Test of setTelefono method, of class Cliente.
      */
     @Test
@@ -253,6 +305,23 @@ public class ClienteTest {
         // TODO review the generated test code and remove the default call to fail.
 
     }
+
+    /**
+     * Test of setTelefono method, of class Cliente.
+     */
+    @Test
+    public void testSetTelefono3() {
+        System.out.println("setTelefono");
+        String nombre = "999999999";
+        Cliente instance = new Cliente();
+        instance.setTelefono("999999999");
+
+        assertNotEquals(nombre, instance.getTelefono());
+        fail("EL Telefono deberia valer");
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
     /**
      * Test of getId method, of class Cliente.
      */
@@ -300,13 +369,37 @@ public class ClienteTest {
     @Test
     public void testData() {
         System.out.println("data");
-        Cliente instance = new  Cliente(null,"999999999", 0L) ;
-        
+        Cliente instance = new Cliente(null, "999999999", 0L);
+
         String expResult = "0L  |  null  |  999999999";
         String result = instance.data();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("El nombre no puede ser nulo");
+    }
+
+    @Test
+    public void testData1() {
+        System.out.println("data");
+        Cliente instance = new Cliente("Aidan", "9999999999", 0L);
+
+        String expResult = "0L  |  Aidan  |  9999999999";
+        String result = instance.data();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("El numero es muy largo");
+    }
+
+    @Test
+    public void testData2() {
+        System.out.println("data");
+        Cliente instance = new Cliente("Aidan", "999999999", 0L);
+
+        String expResult = "0L  |  Aidan  |  999999999";
+        String result = instance.data();
+        assertNotEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("Los datos deberian valer");
     }
 
     /**
@@ -318,9 +411,9 @@ public class ClienteTest {
         long idCliente = 0L;
         Cliente expResult = null;
         Cliente result = Cliente.getClienteById(idCliente);
-        assertEquals(expResult, result);
+        assertNotEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("El cliente no deberia existir");
     }
 
     /**
@@ -348,7 +441,21 @@ public class ClienteTest {
         ArrayList<Cliente> result = Cliente.readClientefromTextFile(path);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede estar vacia");
+    }
+
+    /**
+     * Test of readClientefromTextFile method, of class Cliente.
+     */
+    @Test
+    public void testReadClientefromTextFile1() {
+        System.out.println("readClientefromTextFile");
+        String path = null;
+        ArrayList<Cliente> expResult = null;
+        ArrayList<Cliente> result = Cliente.readClientefromTextFile(path);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser nulo");
     }
 
     /**
@@ -362,7 +469,21 @@ public class ClienteTest {
         ArrayList<Cliente> result = Cliente.readClientefromBinaryFile(path);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacia");
+    }
+
+    /**
+     * Test of readClientefromBinaryFile method, of class Cliente.
+     */
+    @Test
+    public void testReadClientefromBinaryFile1() {
+        System.out.println("readClientefromBinaryFile");
+        String path = null;
+        ArrayList<Cliente> expResult = null;
+        ArrayList<Cliente> result = Cliente.readClientefromBinaryFile(path);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null");
     }
 
     /**
@@ -374,8 +495,25 @@ public class ClienteTest {
         String path = "";
         Cliente instance = new Cliente();
         instance.writeClienteToTextFile(path);
+        String expResult = "";
+        assertEquals(expResult, path);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacio");
+    }
+
+    /**
+     * Test of writeClienteToTextFile method, of class Cliente.
+     */
+    @Test
+    public void testWriteClienteToTextFile1() {
+        System.out.println("writeClienteToTextFile");
+        String path = null;
+        Cliente instance = new Cliente();
+        instance.writeClienteToTextFile(path);
+        String expResult = null;
+        assertEquals(expResult, path);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null");
     }
 
     /**
@@ -387,8 +525,25 @@ public class ClienteTest {
         String path = "";
         Cliente instance = new Cliente();
         instance.writeClienteToBinaryFile(path);
+        String expResult = "";
+        assertEquals(expResult, path);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacio");
+    }
+
+    /**
+     * Test of writeClienteToBinaryFile method, of class Cliente.
+     */
+    @Test
+    public void testWriteClienteToBinaryFile1() {
+        System.out.println("writeClienteToBinaryFile");
+        String path = null;
+        Cliente instance = new Cliente();
+        instance.writeClienteToBinaryFile(path);
+        String expResult = null;
+        assertEquals(expResult, path);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null");
     }
 
     /**
@@ -401,21 +556,44 @@ public class ClienteTest {
         Cliente result = Cliente.nuevoCliente();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("no puede ser null");
     }
 
     /**
      * Test of crearTrabajo method, of class Cliente.
      */
     @Test
-    public void testCrearTrabajo() throws Exception {
+    public void testCrearTrabajo() {
         System.out.println("crearTrabajo");
-        Cliente instance = new Cliente();
-        Trabajo expResult = null;
-        Trabajo result = instance.crearTrabajo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            Cliente instance = new Cliente();
+            Trabajo expResult = null;
+            Trabajo result = instance.crearTrabajo();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("No puede ser null");
+        } catch (TrabajoException ex) {
+            System.out.println("paso por aqui");
+        }
+    }
+
+    /**
+     * Test of crearTrabajo method, of class Cliente.
+     */
+    @Test
+    public void testCrearTrabajo1() {
+        try {
+            System.out.println("crearTrabajo");
+
+            Cliente instance = new Cliente();
+            Trabajo expResult = new Trabajo(null, null, "");//no se el formato del date por defecto
+            Trabajo result = instance.crearTrabajo();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("No puede ser vacio");
+        } catch (TrabajoException ex) {
+            System.out.println("paso por aqui");
+        }
     }
 
     /**
@@ -428,7 +606,7 @@ public class ClienteTest {
         Cliente result = Cliente.registrarCliente();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("No puede ser null");
     }
 
     /**
@@ -441,9 +619,23 @@ public class ClienteTest {
         Cliente instance = new Cliente();
         boolean expResult = false;
         boolean result = instance.aceptarModificacion(m);
-        assertEquals(expResult, result);
+        assertNotEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Deberia ser falso");
+    }
+   /**
+     * Test of aceptarModificacion method, of class Cliente.
+     */
+    @Test
+    public void testAceptarModificacion1() {
+        System.out.println("aceptarModificacion");
+        Modificacion m = null;
+        Cliente instance = new Cliente();
+        boolean expResult = true;
+        boolean result = instance.aceptarModificacion(m);
+        assertNotEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("Deberia ser verdadero");
     }
 
 }
