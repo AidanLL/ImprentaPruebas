@@ -5,6 +5,8 @@
  */
 package imprenta;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -335,7 +337,19 @@ public class TrabajoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    /**    @Test
+    public void testData1(Object date) {
+        System.out.println("Date in in the format: dd-MM-yyyy");
+        System.out.println(new SimpleDateFormat("dd-MM-yyyy").format(date));
+        System.out.println("data");
+        Trabajo instance = new Trabajo(0L,0L,0L,0L,"18-04-2000","18-04-2000","rugoso");No va la fecha.
+        String expResult = "0L  |0L  |0L  |0L  |  18-04-2000  |  18-04-2000| rugoso  ";
+        String result = instance.data();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    */
     /**
      * Test of getTrabajoById method, of class Trabajo.
      */
@@ -375,7 +389,17 @@ public class TrabajoTest {
         ArrayList<Trabajo> result = Trabajo.readTrabajoFromTextFile(path);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacia.");
+    }
+        @Test
+    public void testReadTrabajoFromTextFile1() {
+        System.out.println("readTrabajoFromTextFile");
+        String path = null;
+        ArrayList<Trabajo> expResult = null;
+        ArrayList<Trabajo> result = Trabajo.readTrabajoFromTextFile(path);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser vacia.");
     }
 
     /**
@@ -389,7 +413,17 @@ public class TrabajoTest {
         ArrayList<Trabajo> result = Trabajo.readTrabajoFromBinaryFile(path);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacia.");
+    }
+        @Test
+    public void testReadTrabajoFromBinaryFile1() {
+        System.out.println("readTrabajoFromBinaryFile");
+        String path = null;
+        ArrayList<Trabajo> expResult = null;
+        ArrayList<Trabajo> result = Trabajo.readTrabajoFromBinaryFile(path);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null.");
     }
 
     /**
@@ -402,7 +436,16 @@ public class TrabajoTest {
         Trabajo instance = new Trabajo();
         instance.writeTrabajoToTextFile(path);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacia.");
+    }
+        @Test
+    public void testWriteTrabajoToTextFile1() {
+        System.out.println("writeTrabajoToTextFile");
+        String path = null;
+        Trabajo instance = new Trabajo();
+        instance.writeTrabajoToTextFile(path);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null.");
     }
 
     /**
@@ -415,7 +458,16 @@ public class TrabajoTest {
         Trabajo instance = new Trabajo();
         instance.writeTrabajoToBinaryFile(path);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("La ruta no puede ser vacia.");
+    }
+        @Test
+    public void testWriteTrabajoToBinaryFile1() {
+        System.out.println("writeTrabajoToBinaryFile");
+        String path = null;
+        Trabajo instance = new Trabajo();
+        instance.writeTrabajoToBinaryFile(path);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("La ruta no puede ser null.");
     }
 
     /**
@@ -459,7 +511,7 @@ public class TrabajoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    
     /**
      * Test of modificarTrabajo method, of class Trabajo.
      */
@@ -471,5 +523,5 @@ public class TrabajoTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
