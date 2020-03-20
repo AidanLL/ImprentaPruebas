@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author DAW105
  */
 public class ClienteTest {
-    
+
     public ClienteTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,36 +43,109 @@ public class ClienteTest {
      */
     @Test
     public void testGetNombre() {
-        System.out.println("getNombre");
-        Cliente instance = new Cliente();
-        String expResult = "";
-        String result = instance.getNombre();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-       
+        try {
+            System.out.println("getNombre");
+            Cliente instance = new Cliente();
+            instance.setNombre("");
+            String expResult = "";
+            String result = instance.getNombre();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("cadena vacia");
+        } catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
     }
 
-        public void testGetNombre1() {
-        System.out.println("getNombre");
-        Cliente instance = new Cliente();
-        String expResult = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-        String result = instance.getNombre();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("Cadena demasiado larga");
+    public void testGetNombre1() {
+        try {
+            System.out.println("getNombre");
+            Cliente instance = new Cliente();
+            instance.setNombre("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            String expResult = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            String result = instance.getNombre();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("Cadena demasiado larga");
+        } catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
 
+        }
     }
+
+    /**
+     * Test of getNombre method, of class Cliente.
+     */
+    @Test
+    public void testGetNombre2() {
+        try {
+            System.out.println("getNombre");
+            Cliente instance = new Cliente();
+            instance.setNombre(null);
+            String expResult = null;
+            String result = instance.getNombre();
+            assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El nombre no puede ser nulo");
+        } catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
+    }
+
     /**
      * Test of setNombre method, of class Cliente.
      */
     @Test
     public void testSetNombre() {
-        System.out.println("setNombre");
-        String nombre = "";
-        Cliente instance = new Cliente();
-        instance.setNombre(nombre);
-        // TODO review the generated test code and remove the default call to fail.
-       
+        try {
+            System.out.println("setNombre");
+            String nombre = "*";
+            Cliente instance = new Cliente();
+            instance.setNombre("*");
+
+            assertEquals(nombre, instance.getNombre());
+            fail("EL nombre no puede tener un caracter especial");
+        } // TODO review the generated test code and remove the default call to fail.
+        catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
+    }
+
+    @Test
+    public void testSetNombre1() {
+        try {
+            System.out.println("setNombre");
+            String nombre = "1";
+            Cliente instance = new Cliente();
+            instance.setNombre("1");
+
+            assertEquals(nombre, instance.getNombre());
+            fail("EL nombre no puede tener un numero");
+        } // TODO review the generated test code and remove the default call to fail.
+        catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
+    }
+
+    @Test
+    public void testSetNombre2() {
+        try {
+            System.out.println("setNombre");
+            String nombre = "?";
+            Cliente instance = new Cliente();
+            instance.setNombre("?");
+
+            assertEquals(nombre, instance.getNombre());
+            fail("EL nombre no puede tener un signo de interrogacion");
+        } // TODO review the generated test code and remove the default call to fail.
+        catch (ClienteException ex) {
+            System.out.println("Paso por aquí");
+
+        }
     }
 
     /**
@@ -82,11 +155,57 @@ public class ClienteTest {
     public void testGetTelefono() {
         System.out.println("getTelefono");
         Cliente instance = new Cliente();
+        instance.setTelefono(null);
+        String expResult = null;
+        String result = instance.getTelefono();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("null");
+    }
+
+    /**
+     * Test of getTelefono method, of class Cliente.
+     */
+    @Test
+    public void testGetTelefono1() {
+        System.out.println("getTelefono");
+        Cliente instance = new Cliente();
+        instance.setTelefono("");
         String expResult = "";
         String result = instance.getTelefono();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("cadena vacia");
+    }
+
+    /**
+     * Test of getTelefono method, of class Cliente.
+     */
+    @Test
+    public void testGetTelefono2() {
+        System.out.println("getTelefono");
+        Cliente instance = new Cliente();
+        instance.setTelefono("9999999999");
+        String expResult = "9999999999";
+        String result = instance.getTelefono();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("demasiado largo");
+    }
+
+    /**
+     * Test of getTelefono method, of class Cliente.
+     */
+    @Test
+    public void testGetTelefono3() {
+        System.out.println("getTelefono");
+        Cliente instance = new Cliente();
+        instance.setTelefono("99999999");
+        String expResult = "99999999";
+        String result = instance.getTelefono();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("demasiado corto");
     }
 
     /**
@@ -95,13 +214,45 @@ public class ClienteTest {
     @Test
     public void testSetTelefono() {
         System.out.println("setTelefono");
-        String telefono = "";
+        String nombre = "*";
         Cliente instance = new Cliente();
-        instance.setTelefono(telefono);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        instance.setTelefono("*");
 
+        assertEquals(nombre, instance.getTelefono());
+        fail("EL Telefono no puede tener un caracter especial");
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+   /**
+     * Test of setTelefono method, of class Cliente.
+     */
+    @Test
+    public void testSetTelefono1() {
+        System.out.println("setTelefono");
+        String nombre = "a";
+        Cliente instance = new Cliente();
+        instance.setTelefono("a");
+
+        assertEquals(nombre, instance.getTelefono());
+        fail("EL Telefono no puede tener un letras");
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+       /**
+     * Test of setTelefono method, of class Cliente.
+     */
+    @Test
+    public void testSetTelefono2() {
+        System.out.println("setTelefono");
+        String nombre = "?";
+        Cliente instance = new Cliente();
+        instance.setTelefono("?");
+
+        assertEquals(nombre, instance.getTelefono());
+        fail("EL Telefono no puede signos de exclamcion");
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
     /**
      * Test of getId method, of class Cliente.
      */
@@ -149,12 +300,13 @@ public class ClienteTest {
     @Test
     public void testData() {
         System.out.println("data");
-        Cliente instance = new Cliente();
-        String expResult = "";
+        Cliente instance = new  Cliente(null,"999999999", 0L) ;
+        
+        String expResult = "0L  |  null  |  999999999";
         String result = instance.data();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("El nombre no puede ser nulo");
     }
 
     /**
@@ -293,5 +445,5 @@ public class ClienteTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
